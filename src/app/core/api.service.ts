@@ -37,7 +37,7 @@ export class ApiService {
     return this.http.post<Product>(`${this.apiUrl}/product/add`, request)
   }
 
-  public updateProduct(id: number, request: Product): Observable<Product>{
-    return this.http.put<>
-  }
+  // public updateProduct(id: number, request: Product): Observable<Product>{
+  //   return this.http.put<>
+  // }
 }
