@@ -12,3 +12,15 @@ export interface RegisterRequest{
         phone : string;
         address : string;
 }
+
+export interface LoginResponse {
+  username: string;
+  message: string;
+  jwt: string;
+  status: boolean;
+}
+
+export interface RawLoginResponse {
+  message?: string;
+  data?: LoginResponse;
+}

@@ -1,0 +1,142 @@
+/* =========================
+   ESTILOS ESPECÍFICOS PARA REGISTER
+   ========================= */
+.register-page .container {
+    max-width: 700px;
+    padding: 30px;
+}
+
+.register-page .main-content h2 {
+    font-size: 2.1rem;
+    margin-bottom: 18px;
+}
+
+.register-page .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.register-page .form-group {
+    margin-bottom: 0;
+}
+
+.register-page .form-group.full-width {
+    grid-column: 1 / -1;
+    margin-bottom: 12px;
+}
+
+.register-page .form-control {
+    padding: 10px 12px 10px 38px;
+    font-size: 14px;
+}
+
+.register-page .form-group label {
+    font-size: 0.85rem;
+    margin-bottom: 5px;
+}
+
+.register-page .btn-primary {
+    grid-column: 1 / -1;
+    margin-top: 8px;
+    padding: 12px 24px;
+    font-size: 15px;
+}
+
+.register-page .form-group .input-icon {
+    left: 10px;
+    font-size: 14px;
+}
+/* Agrega estos estilos a tu register.component.css existente */
+
+/* Estilos para campos inválidos */
+.form-control.invalid {
+  border-color: #dc3545 !important;
+  background-color: #fff5f5;
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+.form-control.invalid:focus {
+  border-color: #dc3545 !important;
+  box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
+}
+
+/* Mensajes de error debajo de cada campo */
+.error-text {
+  display: block;
+  color: #dc3545;
+  font-size: 0.875rem;
+  margin-top: 0.375rem;
+  margin-left: 2.5rem; /* Alineado con el input (considerando el ícono) */
+  font-weight: 500;
+  animation: fadeIn 0.3s ease-in;
+}
+
+/* Animación suave para los mensajes de error */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Ajuste para el grupo de formulario con error */
+.form-group.has-icon {
+  position: relative;
+  margin-bottom: 1.5rem; /* Más espacio para el mensaje de error */
+}
+
+/* Asegurar que el mensaje de error no se superponga */
+.form-group.has-icon .error-text {
+  margin-left: 0;
+  padding-left: 2.5rem; /* Alineado con el input */
+}
+
+/* Estilo del ícono cuando el campo es inválido */
+.form-group.has-icon .form-control.invalid ~ .input-icon {
+  color: #dc3545;
+}
+
+/* Mensaje de error general del formulario */
+.alert-danger {
+  background-color: #f8d7da;
+  border: 1px solid #f5c2c7;
+  color: #842029;
+  padding: 1rem;
+  border-radius: 0.375rem;
+  margin-top: 1rem;
+  font-size: 0.95rem;
+}
+
+/* Botón deshabilitado */
+.btn.btn-primary:disabled {
+  background-color: #6c757d;
+  border-color: #6c757d;
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+/* Estilo para labels con asterisco (campos obligatorios) */
+.form-group label {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+/* Responsive: ajustes para móviles */
+@media (max-width: 768px) {
+  .error-text {
+    font-size: 0.8rem;
+    padding-left: 0;
+    margin-left: 0;
+  }
+  
+  .form-group.has-icon .error-text {
+    padding-left: 0;
+  }
+}

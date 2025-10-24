@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { LoginRequest, RegisterRequest } from './models/auth.model';
+import { Observable, tap } from 'rxjs';
+import { LoginRequest, LoginResponse, RegisterRequest } from './models/auth.model';
 import { Product } from './models/products.model';
+import { environment } from '../../enviroment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,12 +12,20 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  private apiUrl = 'https://api.ejemplo.com/api';
+  private apiUrl = environment.apiUrl;
 
 
   // Authentication Methods
-  public login(request : LoginRequest): Observable<LoginRequest> {
-    return this.http.post<LoginRequest>(`${this.apiUrl}/auth/login`, request);
+  public login(credentials: any): Observable<LoginResponse> {
+    return this.http.post<LoginResponse>(`${this.apiUrl}/login`, credentials)
+      .pipe(
+        tap(response => {
+          if (response.status) {
+            localStorage.setItem('token', response.jwt);
+            localStorage.setItem('username', response.username);
+          }
+        })
+      );
   }
 
   public register(request: RegisterRequest): Observable<RegisterRequest> {

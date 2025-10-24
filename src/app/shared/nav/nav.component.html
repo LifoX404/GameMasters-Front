@@ -1,1 +1,36 @@
-<p>nav works!</p>
+<nav>
+  <ul>
+    <!-- Logo Section -->
+    <li>
+      <div class="logo">
+        <img src="assets/images/TechPlusLogo.svg" alt="TechnoPlus Logo" />
+        <h1>TechnoPlus</h1>
+      </div>
+    </li>
+
+    <li class="nav-center">
+      <a routerLink="#">Inicio</a>
+      <a routerLink="#">Productos</a>
+      <a routerLink="#">Carrito</a>
+      @if (userRol === 'CLIENT') {
+        <a routerLink="/ordenes">Órdenes</a>
+      }
+    
+    </li>
+
+    <li class="auth-section">
+       @if (!username) {
+        <a routerLink="/login" class="login-link">Iniciar sesión</a>
+       }
+
+      @if (username) {
+        <div class="user-section">
+          <div class="user-welcome">
+            Bienvenido, <span class="username">{{ username }}</span>
+          </div>
+          <button (click)="logout()" class="logout-btn">Cerrar Sesión</button>
+        </div>
+      }
+    </li>
+  </ul>
+</nav>
