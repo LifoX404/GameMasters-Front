@@ -17,7 +17,8 @@ export const routes: Routes = [
     children: [
       { path: 'register', component: RegisterComponent }, // Carga HomeComponent DENTRO de PublicLayout
       { path: 'login', component: LoginComponent },
-      {path: 'ordenes', component : OrderComponent}// Carga ContactComponent DENTRO de PublicLayout
+      { path: 'ordenes', component : OrderComponent},
+      // Carga ContactComponent DENTRO de PublicLayout
       // ...otras rutas públicas
     ]
   },
@@ -30,7 +31,7 @@ export const routes: Routes = [
       { path: 'productos/editar', component: ProductosEditarComponent },
       { path: 'productos/crear', component: ProductosCrearComponent},
       { path: 'dashboard', component: AdminDashboardComponent },
-      {path: 'ordenes', component: OrdenesComponent} // Carga ContactComponent DENTRO de PublicLayout
+      { path: 'ordenes', component: OrdenesComponent} // Carga ContactComponent DENTRO de PublicLayout
       // ...otras rutas públicas
     ]
   }
