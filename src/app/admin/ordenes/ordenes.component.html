@@ -5,6 +5,7 @@
 
 <!-- placeholder for subcomponents -->
 <div class="ordenes-body">
-  <app-table *ngIf="vista === 'tabla'"></app-table>
-  <app-detalles *ngIf="vista === 'detalles'"></app-detalles>
+  @if (vista === 'tabla') {
+    <app-table></app-table>
+  }
 </div>

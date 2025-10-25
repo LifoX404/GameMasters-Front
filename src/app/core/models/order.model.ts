@@ -8,6 +8,30 @@ export interface OrderList {
   paymentMethod: PaymentMethod;
   observations: string;
   status: boolean;
+  customer: CustomerDTO;
+  orderItem: OrderItem;
+}
+
+export interface OrderItem {
+  id: number;
+  productId: number;
+  productName: string;
+  itemQuantity: number;
+  unitPrice: number;
+  subtotal: number;
+}
+
+
+
+export interface CustomerDTO {
+
+  id: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  address: string;
+  createdAt: string;
 }
 
 export enum OrderStatus {

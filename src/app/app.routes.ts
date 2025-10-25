@@ -30,7 +30,8 @@ export const routes: Routes = [
       { path: 'productos/editar', component: ProductosEditarComponent },
       { path: 'productos/crear', component: ProductosCrearComponent},
       { path: 'dashboard', component: AdminDashboardComponent },
-      { path: 'ordenes', component: OrdenesComponent} // Carga ContactComponent DENTRO de PublicLayout
+      { path: 'ordenes', component: OrdenesComponent},
+      // Carga ContactComponent DENTRO de PublicLayout
       // ...otras rutas públicas
     ]
   }

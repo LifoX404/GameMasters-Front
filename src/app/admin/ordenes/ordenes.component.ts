@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { TableComponent } from './table/table.component';
-import { DetallesComponent } from './detalles/detalles.component';
+import { DetallesComponent } from './table/detalles/detalles.component';
 
 @Component({
   selector: 'app-ordenes',
