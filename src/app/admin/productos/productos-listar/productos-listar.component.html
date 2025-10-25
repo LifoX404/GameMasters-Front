@@ -1,0 +1,60 @@
+<main>
+  <div class="main-container">
+    <div class="page-header">
+      <div class="page-header-tittle">
+        <h1>Gestión de Productos</h1>
+        <p>Administra el inventario y catálogo de productos</p>
+      </div>
+      <a routerLink="/admin/productos/crear" class="add-producto">Nuevo producto</a>
+    </div>
+
+    <div class="table-container">
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Imagen</th>
+              <th scope="col">Producto</th>
+              <th scope="col">Stock</th>
+              <th scope="col">Estado</th>
+              <th scope="col">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of productos">
+              <td>
+                <img
+                  [src]="item.imagenProducto"
+                  alt="Imagen del producto"
+                  class="product-image"
+                />
+              </td>
+              <td><strong>{{ item.nombreProducto }}</strong></td>
+              <td><span class="stock-number">{{ item.stockProducto }}</span></td>
+              <td>
+                <span
+                  class="status-badge"
+                  [ngClass]="{
+                    'status-active': item.status,
+                    'status-inactive': !item.status
+                  }"
+                  >{{ item.status ? 'Activo' : 'Inactivo' }}</span
+                >
+              </td>
+              <td>
+                <div class="action-buttons">
+                  <button class="btn btn-warning btn-sm" (click)="editar(item)">
+                    Editar
+                  </button>
+                  <button class="btn btn-danger btn-sm" (click)="eliminar(item)">
+                    Eliminar
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</main>
