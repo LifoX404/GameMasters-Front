@@ -9,5 +9,5 @@ export interface Product {
 }
 
 export interface UpdateProductRequest extends Omit<Product, 'id'> {
-  categorId: string;
+  categoryId: string;
 }

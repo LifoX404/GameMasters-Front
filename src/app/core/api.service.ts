@@ -1,9 +1,11 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable, tap } from 'rxjs';
-import { LoginRequest, LoginResponse, RegisterRequest } from './models/auth.model';
-import { Product } from './models/products.model';
-import { environment } from '../../enviroment';
+import {HttpClient} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {Observable, tap} from 'rxjs';
+import {LoginResponse, RegisterRequest} from './models/auth.model';
+import {Product} from './models/products.model';
+import {environment} from '../../enviroment';
+import {ApiResponse} from './models/common.model';
+import {OrderList} from './models/order.model';
 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +38,10 @@ export class ApiService {
 
   public getProducts(): Observable<Product[]> {
       return this.http.get<Product[]>(`${this.apiUrl}/product/get`)
+  }
+
+  public getOrders(): Observable<ApiResponse<OrderList[]>> {
+    return this.http.get<ApiResponse<OrderList[]>>(`${this.apiUrl}/orders/get`)
   }
 
   public getProduct(id: number): Observable<Product>{
