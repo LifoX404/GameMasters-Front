@@ -1,84 +1,96 @@
-<div class="detalles-container">
-  <div class="header">
-    <h2>Detalles de la orden</h2>
-  </div>
+<p-card header="Detalles de la orden" styleClass="detalles-container">
+  <div class="p-fluid p-formgrid p-grid">
+    <!-- Código de orden -->
+    <div class="p-field p-col-12 p-md-6">
+      <label for="codigo">Código de orden</label>
+      <input pInputText id="codigo" [readonly]="true" [value]="orden?.id" />
+    </div>
 
-  @if (orden) {
-    <section>
-      <div class="container">
-        <div class="form-group">
-          <label>Código de orden</label>
-          <span class="form-control">{{ orden.id }}</span>
-        </div>
+    <!-- Fecha de orden -->
+    <div class="p-field p-col-12 p-md-6">
+      <label for="fecha">Fecha de la orden</label>
+      <input
+        pInputText
+        id="fecha"
+        [readonly]="true"
+        [value]="orden?.orderDate | date : 'dd/MM/yyyy'"
+      />
+    </div>
 
-        <div class="form-group">
-          <label>Fecha de la orden</label>
-          <span class="form-control">{{ orden.orderDate | date : "dd/MM/yyyy" }}</span>
-        </div>
+    <!-- Cliente -->
+    <div class="p-field p-col-12">
+      <label>Cliente</label>
+      <p-card styleClass="p-mt-2">
+        <div><strong>Nombre:</strong> {{ orden?.customer?.firstName }}</div>
+        <div><strong>Correo:</strong> {{ orden?.customer?.email }}</div>
+      </p-card>
+    </div>
 
-        <div class="form-group">
-          <label>Cliente</label>
-          <div class="form-control client-info">
-            <span>Nombre: {{ orden.customer?.firstName }}</span
-            ><br />
-            <span>Correo: {{ orden.customer?.email }}</span>
-          </div>
-        </div>
+    <!-- Dirección -->
+    <div class="p-field p-col-12 p-md-6">
+      <label>Dirección de entrega</label>
+      <input pInputText [readonly]="true" [value]="orden?.deliveryAddress" />
+    </div>
 
-        <div class="form-group">
-          <label>Dirección de entrega</label>
-          <span class="form-control">{{ orden.deliveryAddress }}</span>
-        </div>
+    <!-- Teléfono -->
+    <div class="p-field p-col-12 p-md-6">
+      <label>Teléfono</label>
+      <input pInputText [readonly]="true" [value]="orden?.deliveryPhone" />
+    </div>
 
-        <div class="form-group">
-          <label>Teléfono</label>
-          <span class="form-control">{{ orden.deliveryPhone }}</span>
-        </div>
+    <!-- Estado -->
+    <div class="p-field p-col-12 p-md-6">
+      <label>Estado</label><br />
+      <p-tag
+        [value]="orden?.orderStatus ?? ''"
+        [severity]="getSeverity(orden?.orderStatus ?? '')"
+      >
+      </p-tag>
+    </div>
 
-        <div class="form-group">
-          <label>Estado</label>
-          <span class="form-control">{{ orden.orderStatus }}</span>
-        </div>
+    <!-- Observaciones -->
+    <div class="p-field p-col-12">
+      <label>Observaciones</label>
+      <textarea
+        pInputTextarea
+        [readonly]="true"
+        [autoResize]="true"
+        [value]="orden?.observations || '—'"
+      >
+      </textarea>
+    </div>
 
-        <div class="form-group">
-          <label>Observaciones</label>
-          <span class="form-control-plaintext">{{ orden.observations }}</span>
-        </div>
+    <!-- Productos -->
+    <div class="p-field p-col-12">
+      <label>Productos</label>
+      <p-table
+        [value]="orden?.orderItem ?? []"
+        *ngIf="orden?.orderItem?.length"
+      >
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Precio Unitario</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-item>
+          <tr>
+            <td>{{ item.productName }}</td>
+            <td>{{ item.itemQuantity }}</td>
+            <td>S/. {{ item.unitPrice | number : "1.2-2" }}</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
 
-        <div class="form-group">
-          <label>Productos</label>
-          <div class="products-container">
-            @for (item of orden.orderItem; track item.id) {
-              <div class="product-item">
-                <div class="product-row">
-                  <div class="product-info">
-                    <span class="product-name">{{ item.productName }}</span>
-                    <span class="product-quantity">{{ item.itemQuantity }}</span>
-                    <span class="product-price">
-                    S/. {{ item.unitPrice | number : "1.2-2" }}
-                  </span>
-                  </div>
-                </div>
-              </div>
-            } @empty {
-              <p>No hay productos registrados en esta orden.</p>
-            }
-          </div>
-        </div>
-
-        <div class="order-total">
-          <label>Total de la orden</label>
-          <div class="total-amount">
-            S/. {{ orden.orderTotal | number : "1.2-2" }}
-          </div>
-        </div>
+    <!-- Total -->
+    <div class="p-field p-col-12 order-total" *ngIf="orden?.orderTotal">
+      <p-divider></p-divider>
+      <div class="p-text-right p-mt-2">
+        <strong>Total:</strong>
+        <span class="ml-2">S/. {{ orden?.orderTotal | number : "1.2-2" }}</span>
       </div>
-    </section>
-  } @else if (loading) {
-    <p>Cargando detalles de la orden...</p>
-  } @else if (error) {
-    <p class="error-message">Error: {{ error }}</p>
-  } @else {
-    <p>No se encontraron detalles para esta orden.</p>
-  }
-</div>
+    </div>
+  </div>
+</p-card>

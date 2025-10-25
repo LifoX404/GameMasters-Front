@@ -5,7 +5,7 @@ import { DetallesComponent } from './table/detalles/detalles.component';
 @Component({
   selector: 'app-ordenes',
   standalone: true,
-  imports: [TableComponent, DetallesComponent],
+  imports: [TableComponent],
   templateUrl: './ordenes.component.html',
   styleUrls: ['./ordenes.component.css']
 })

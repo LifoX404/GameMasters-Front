@@ -1,19 +1,33 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule, DatePipe, DecimalPipe, NgClass } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterModule } from '@angular/router';
 import { ApiService } from '../../../core/api.service';
 import { Subject, takeUntil } from 'rxjs';
 import { OrderList } from '../../../core/models/order.model';
-import { DetallesComponent } from "./detalles/detalles.component";
-import { EditarComponent } from "./editar/editar.component";
-
+import { DetallesComponent } from './detalles/detalles.component';
+import { Table, TableModule } from 'primeng/table';
+import { ButtonModule } from 'primeng/button';
+import { TagModule } from 'primeng/tag';
+import { CardModule } from 'primeng/card';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 @Component({
   selector: 'app-table',
   standalone: true,
-  imports: [CommonModule, DatePipe, DecimalPipe, NgClass, DetallesComponent, EditarComponent],
+  imports: [
+    CommonModule,
+    DatePipe,
+    DecimalPipe,
+    NgClass,
+    RouterModule,
+    TableModule,
+    ButtonModule,
+    TagModule,
+    CardModule,
+    ProgressSpinnerModule
+  ],
   templateUrl: './table.component.html',
-  styleUrls: ['./table.component.css']
+  styleUrls: ['./table.component.css'],
 })
 export class TableComponent implements OnInit, OnDestroy {
   ordenes: OrderList[] = []; // <-- Quita el @Input()
@@ -33,11 +47,31 @@ export class TableComponent implements OnInit, OnDestroy {
     this.destroy$.complete();
   }
 
+  getSeverity(status: string): string {
+  switch (status) {
+    case 'PENDING':
+      return 'warning';
+    case 'CONFIRMED':
+      return 'info';
+    case 'PROCESSING':
+      return 'secondary';
+    case 'SHIPPED':
+      return 'help';
+    case 'DELIVERED':
+      return 'success';
+    case 'CANCELED':
+      return 'danger';
+    default:
+      return 'info';
+  }
+}
+
   loadOrders(): void {
     this.loading = true;
     this.error = null;
 
-    this.orderService.getOrders()
+    this.orderService
+      .getOrders()
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (response) => {
@@ -49,8 +83,7 @@ export class TableComponent implements OnInit, OnDestroy {
           this.error = 'Error al conectar con el servidor';
           console.error('Error:', err);
           this.loading = false;
-        }
+        },
       });
   }
 }
-

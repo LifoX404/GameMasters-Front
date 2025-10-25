@@ -1,72 +1,81 @@
-<main class="main-content">
-  <div class="header">
-    <h2>Nuevo Producto</h2>
+<main class="p-m-4">
+  <!-- Header -->
+  <div class="p-mb-4">
+    <h2 class="p-mb-2">Nuevo Producto</h2>
   </div>
 
+  <!-- Form -->
   <section>
-    <div class="container">
-      <form (ngSubmit)="crearProducto()" [formGroup]="formProducto">
-        <div class="form-group">
-          <label for="txtNombre">Nombre del Producto</label>
-          <input
-            formControlName="nombreProducto"
-            type="text"
-            class="form-control"
-            id="txtNombre"
-            placeholder="Ingrese el nombre del producto"
-          />
-        </div>
+    <div class="p-card p-shadow-2 p-p-4">
+      <form [formGroup]="formProducto" (ngSubmit)="crearProducto()">
+        <div class="p-fluid p-formgrid p-grid">
+          <!-- Nombre -->
+          <div class="p-field p-col-12 p-md-6">
+            <label for="txtNombre">Nombre del Producto</label>
+            <input
+              id="txtNombre"
+              type="text"
+              formControlName="nombreProducto"
+              pInputText
+              placeholder="Ingrese el nombre del producto"
+            />
+          </div>
 
-        <div class="form-group">
-          <label for="txtImage">Ruta del Producto</label>
-          <span>Ingrese una URL válida (debe terminar en .png / .jpg / etc.).</span><br />
-          <span>Tamaño recomendable: 800 X 800</span>
-          <input
-            formControlName="imagenProducto"
-            type="text"
-            class="form-control"
-            id="txtImage"
-            placeholder="Ingrese la url de la imagen"
-          />
-        </div>
+          <!-- Imagen -->
+          <div class="p-field p-col-12 p-md-6">
+            <label for="txtImage">Ruta del Producto</label>
+            <small class="p-d-block">Ingrese una URL válida (debe terminar en .png / .jpg / etc.)</small>
+            <small class="p-d-block">Tamaño recomendable: 800 X 800</small>
+            <input
+              id="txtImage"
+              type="text"
+              formControlName="imagenProducto"
+              pInputText
+              placeholder="Ingrese la url de la imagen"
+            />
+          </div>
 
-        <div class="form-group">
-          <label for="txtDescripcion">Descripción</label>
-          <textarea
-            formControlName="descripcionProducto"
-            class="form-control"
-            id="txtDescripcion"
-            placeholder="Descripción del producto"
-          ></textarea>
-        </div>
+          <!-- Descripción -->
+          <div class="p-field p-col-12">
+            <label for="txtDescripcion">Descripción</label>
+            <textarea
+              id="txtDescripcion"
+              formControlName="descripcionProducto"
+              pInputTextarea
+              rows="4"
+              placeholder="Descripción del producto"
+            ></textarea>
+          </div>
 
-        <div class="form-group">
-          <label for="txtPrecio">Precio</label>
-          <input
-            formControlName="precioProducto"
-            type="number"
-            class="form-control"
-            id="txtPrecio"
-            placeholder="0.00"
-            step="0.01"
-          />
-        </div>
+          <!-- Precio -->
+          <div class="p-field p-col-12 p-md-6">
+            <label for="txtPrecio">Precio</label>
+            <input
+              id="txtPrecio"
+              type="number"
+              formControlName="precioProducto"
+              pInputText
+              placeholder="0.00"
+              step="0.01"
+            />
+          </div>
 
-        <div class="form-group">
-          <label for="txtStock">Stock</label>
-          <input
-            formControlName="stockProducto"
-            type="number"
-            class="form-control"
-            id="txtStock"
-            placeholder="Cantidad en stock"
-          />
-        </div>
+          <!-- Stock -->
+          <div class="p-field p-col-12 p-md-6">
+            <label for="txtStock">Stock</label>
+            <input
+              id="txtStock"
+              type="number"
+              formControlName="stockProducto"
+              pInputText
+              placeholder="Cantidad en stock"
+            />
+          </div>
 
-        <div class="form-actions">
-          <button type="submit" class="btn btn-primary">
-            Guardar Cambios
-          </button>
+          <!-- Submit Button -->
+          <div class="p-col-12">
+            <button type="submit" pButton label="Guardar Cambios" class="p-button-primary"></button>
+          </div>
         </div>
       </form>
     </div>

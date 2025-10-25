@@ -1,0 +1,17 @@
+:host ::ng-deep .p-card {
+  border-radius: 1rem;
+}
+
+:host ::ng-deep .p-table {
+  border-radius: 0.8rem;
+  overflow: hidden;
+}
+
+:host ::ng-deep .p-tag {
+  text-transform: capitalize;
+}
+
+:host ::ng-deep .p-button-sm {
+  font-size: 0.9rem;
+  padding: 0.4rem 0.8rem;
+}

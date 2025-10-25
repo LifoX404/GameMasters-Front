@@ -1,13 +1,30 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { InputTextModule } from 'primeng/inputtext';
+import { ButtonModule } from 'primeng/button';
+import { CardModule } from 'primeng/card';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-productos-crear',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    InputTextModule,
+    ButtonModule,
+    CardModule,
+    FormsModule,
+    ReactiveFormsModule
+  ],
   templateUrl: './productos-crear.component.html',
-  styleUrls: ['./productos-crear.component.css']
+  styleUrls: ['./productos-crear.component.css'],
 })
 export class ProductosCrearComponent {
   formProducto: FormGroup;
