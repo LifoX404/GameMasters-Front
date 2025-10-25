@@ -17,11 +17,11 @@ export const routes: Routes = [
     children: [
       { path: 'register', component: RegisterComponent }, // Carga HomeComponent DENTRO de PublicLayout
       { path: 'login', component: LoginComponent },
-      {path: 'ordenes', component : OrderComponent}// Carga ContactComponent DENTRO de PublicLayout
+      { path: 'ordenes', component : OrderComponent},
+      // Carga ContactComponent DENTRO de PublicLayout
       // ...otras rutas públicas
     ]
   },
-
 
     {
     path: 'admin',
