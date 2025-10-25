@@ -9,7 +9,7 @@ export interface OrderList {
   observations: string;
   status: boolean;
   customer: CustomerDTO;
-  orderItem: OrderItem;
+  orderItem: OrderItem[];
 }
 
 export interface OrderItem {
@@ -21,10 +21,7 @@ export interface OrderItem {
   subtotal: number;
 }
 
-
-
 export interface CustomerDTO {
-
   id: number;
   firstName: string;
   lastName: string;
@@ -41,10 +38,6 @@ export interface OrderItem {
   itemQuantity: number;
   unitPrice: number;
   subtotal: number;
-}
-
-export interface OrderDetail extends OrderList{
-  orderItem: OrderItem[];
 }
 
 export enum OrderStatus {

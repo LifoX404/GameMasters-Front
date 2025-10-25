@@ -27,14 +27,6 @@ export class ApiService {
       return this.http.get<Product[]>(`${this.apiUrl}/product/get`)
   }
 
-  public getOrders(): Observable<ApiResponse<OrderList[]>> {
-    return this.http.get<ApiResponse<OrderList[]>>(`${this.apiUrl}/orders/get`)
-  }
-
-  public getOrderById(id: number): Observable<ApiResponse<OrderList>> {
-  return this.http.get<ApiResponse<OrderList>>(`${this.apiUrl}/orders/get/${id}`);
-  }
-
   public getProduct(id: number): Observable<Product>{
     return this.http.get<Product>(`${this.apiUrl}/product/get/${id}`)
   }
@@ -51,6 +43,10 @@ export class ApiService {
 
   public getOrdersByCustomer(id : number): Observable<ApiResponse<OrderList[]>> {
     return this.http.get<ApiResponse<OrderList[]>>(`${this.apiUrl}/orders/from/${id}`)
+  }
+
+  public getOrderById(id: number): Observable<ApiResponse<OrderList>> {
+    return this.http.get<ApiResponse<OrderList>>(`${this.apiUrl}/orders/get/${id}`);
   }
 
 

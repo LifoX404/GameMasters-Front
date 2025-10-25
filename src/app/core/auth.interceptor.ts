@@ -25,6 +25,5 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
     return next(cloned);
   }
 
-  // 🚫 Sin token, seguir normal
   return next(req);
 };

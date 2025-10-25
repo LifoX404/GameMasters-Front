@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router'; // Aunque no se use, estaba en tu código
 import { OrderList } from '../../../../core/models/order.model';
 import { ApiService } from '../../../../core/api.service';
-// Importa las dependencias necesarias
 
 
 @Component({
@@ -15,7 +14,7 @@ import { ApiService } from '../../../../core/api.service';
 })
 export class DetallesComponent implements OnInit {
   @Input({ required: true }) id!: number;
-  orden: OrderList | null = null; // Mejor usar 'null' en lugar de 'OrderList = null'
+  orden: OrderList | null = null;
   loading = true;
   error: string | null = null;
 
@@ -26,18 +25,17 @@ export class DetallesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    if (this.id) {
-      this.apiService.getOrderById(this.id).subscribe({
-        next: (data) => {
-          this.orden = data;
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    if (id) {
+      this.apiService.getOrderById(id).subscribe({
+        next: (response) => {
+          this.orden = response.data;
           this.loading = false;
         },
-        // EL ARREGLO ESTÁ AQUÍ: Usamos (err) y llaves {}
-        error: (err) => { 
-          console.error('Error al cargar la orden:', err); // Para depuración
+        error: (err) => {
+          console.error('Error al cargar la orden:', err);
           this.error = 'No se pudo cargar la orden';
           this.loading = false;
-          this.orden = null; // Limpiamos la orden en caso de error
         }
       });
     } else {

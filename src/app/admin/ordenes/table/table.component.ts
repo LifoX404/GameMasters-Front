@@ -11,7 +11,7 @@ import { EditarComponent } from "./editar/editar.component";
 @Component({
   selector: 'app-table',
   standalone: true,
-  imports: [CommonModule, DatePipe, DecimalPipe, NgClass, RouterLink, DetallesComponent, EditarComponent],
+  imports: [CommonModule, DatePipe, DecimalPipe, NgClass, DetallesComponent, EditarComponent],
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.css']
 })
