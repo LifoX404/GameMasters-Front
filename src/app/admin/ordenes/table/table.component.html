@@ -1,0 +1,61 @@
+<div class="table-container">
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Fecha</th>
+          <th scope="col">Total</th>
+          <th scope="col">Método Pago</th>
+          <th scope="col">Estado Orden</th>
+          <th scope="col">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of ordenes">
+          <td>
+            <span class="date-badge">{{ item.fechaOrden | date: 'dd/MM/yyyy' }}</span>
+          </td>
+          <td>
+            <span class="price-badge">S/ {{ item.totalOrden | number: '1.2-2' }}</span>
+          </td>
+          <td>
+            <span class="code-badge">{{ item.metodoPago }}</span>
+          </td>
+          <td>
+            <span
+              class="status-badge"
+              [ngClass]="{
+                'status-pending': item.estadoOrden === 'PENDIENTE',
+                'status-confirmed': item.estadoOrden === 'CONFIRMADA',
+                'status-processing': item.estadoOrden === 'PROCESANDO',
+                'status-shipped': item.estadoOrden === 'ENVIADO',
+                'status-delivered': item.estadoOrden === 'ENTREGADO',
+                'status-cancelled': item.estadoOrden === 'CANCELADA'
+              }"
+            >
+              {{ item.estadoOrden }}
+            </span>
+          </td>
+          <td>
+            <div class="action-buttons">
+              <a [routerLink]="['/admin/ordenes/detalles', item.codigoOrden]" class="btn btn-primary btn-sm">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                  <circle cx="12" cy="12" r="3" />
+                </svg>
+                Detalles
+              </a>
+              <a [routerLink]="['/admin/ordenes/editar', item.codigoOrden]" class="btn btn-warning btn-sm">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7" />
+                  <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z" />
+                </svg>
+                Editar
+              </a>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

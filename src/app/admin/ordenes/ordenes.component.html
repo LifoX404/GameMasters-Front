@@ -1,0 +1,10 @@
+<div class="page-header">
+  <h1>Gestión de Órdenes</h1>
+  <p>Administra las órdenes de pedidos y su estado de entrega</p>
+</div>
+
+<!-- placeholder for subcomponents -->
+<div class="ordenes-body">
+  <app-table *ngIf="vista === 'tabla'"></app-table>
+  <app-detalles *ngIf="vista === 'detalles'"></app-detalles>
+</div>

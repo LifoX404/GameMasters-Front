@@ -8,6 +8,7 @@ import { ProductosEditarComponent } from './admin/productos/productos-editar/pro
 import { OrderComponent } from './pages/order/order.component';
 import { AdminComponent } from './layout/admin/admin.component';
 import { AdminDashboardComponent } from './admin/dashboard/admin-dashboard.component';
+import { OrdenesComponent } from './admin/ordenes/ordenes.component';
 
 export const routes: Routes = [
   {
@@ -29,7 +30,8 @@ export const routes: Routes = [
       { path: 'productos', component: ProductosListarComponent }, // Carga HomeComponent DENTRO de PublicLayout
       { path: 'productos/editar', component: ProductosEditarComponent },
       { path: 'productos/crear', component: ProductosCrearComponent},
-      { path: 'dashboard', component: AdminDashboardComponent }// Carga ContactComponent DENTRO de PublicLayout
+      { path: 'dashboard', component: AdminDashboardComponent },
+      {path: 'ordenes', component: OrdenesComponent} // Carga ContactComponent DENTRO de PublicLayout
       // ...otras rutas públicas
     ]
   }
