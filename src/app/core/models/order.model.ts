@@ -10,6 +10,19 @@ export interface OrderList {
   status: boolean;
 }
 
+export interface OrderItem {
+  id: number;
+  productId: number;
+  productName: string;
+  itemQuantity: number;
+  unitPrice: number;
+  subtotal: number;
+}
+
+export interface OrderDetail extends OrderList{
+  orderItem: OrderItem[];
+}
+
 export enum OrderStatus {
   PENDING = "PENDING",
   CONFIRMED = "CONFIRMED",

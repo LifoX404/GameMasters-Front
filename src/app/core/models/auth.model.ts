@@ -15,12 +15,13 @@ export interface RegisterRequest{
 
 export interface LoginResponse {
   username: string;
-  message: string;
+  roleType : string;
+  customerId: number | null;
   jwt: string;
-  status: boolean;
 }
 
 export interface RawLoginResponse {
   message?: string;
   data?: LoginResponse;
 }
+

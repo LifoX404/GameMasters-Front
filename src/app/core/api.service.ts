@@ -17,19 +17,6 @@ export class ApiService {
   private apiUrl = environment.apiUrl;
 
 
-  // Authentication Methods
-  public login(credentials: any): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>(`${this.apiUrl}/login`, credentials)
-      .pipe(
-        tap(response => {
-          if (response.status) {
-            localStorage.setItem('token', response.jwt);
-            localStorage.setItem('username', response.username);
-          }
-        })
-      );
-  }
-
   public register(request: RegisterRequest): Observable<RegisterRequest> {
     return this.http.post<RegisterRequest>(`${this.apiUrl}/auth/register`, request);
   }
@@ -40,10 +27,6 @@ export class ApiService {
       return this.http.get<Product[]>(`${this.apiUrl}/product/get`)
   }
 
-  public getOrders(): Observable<ApiResponse<OrderList[]>> {
-    return this.http.get<ApiResponse<OrderList[]>>(`${this.apiUrl}/orders/get`)
-  }
-
   public getProduct(id: number): Observable<Product>{
     return this.http.get<Product>(`${this.apiUrl}/product/get/${id}`)
   }
@@ -52,7 +35,16 @@ export class ApiService {
     return this.http.post<Product>(`${this.apiUrl}/product/add`, request)
   }
 
-  // public updateProduct(id: number, request: Product): Observable<Product>{
-  //   return this.http.put<>
-  // }
+  // Orders
+
+  public getOrders(): Observable<ApiResponse<OrderList[]>> {
+    return this.http.get<ApiResponse<OrderList[]>>(`${this.apiUrl}/orders/get`)
+  }
+
+  public getOrdersByCustomer(id : number): Observable<ApiResponse<OrderList[]>> {
+    return this.http.get<ApiResponse<OrderList[]>>(`${this.apiUrl}/orders/from/${id}`)
+  }
+
+
+
 }

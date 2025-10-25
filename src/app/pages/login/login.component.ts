@@ -44,12 +44,7 @@ export class LoginComponent {
     this.authService.login(this.loginForm.value).subscribe({
       next: (response) => {
         this.loading = false;
-        if (response.status) {
-          // El AuthService ya maneja todo automáticamente
-          this.router.navigate(['/']);
-        } else {
-          this.errorMessage = response.message || 'Credenciales inválidas';
-        }
+        this.router.navigate(['/']);
       },
       error: (err) => {
         this.loading = false;
