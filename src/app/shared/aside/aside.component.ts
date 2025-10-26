@@ -1,11 +1,16 @@
 import {Component, Input} from '@angular/core';
-import {RouterLink} from '@angular/router';
+import {RouterLink, RouterLinkActive} from '@angular/router';
 import {MenuItem} from '../../core/models/common.model';
+import {ButtonDirective} from 'primeng/button';
+import {Ripple} from 'primeng/ripple';
 
 @Component({
   selector: 'app-aside',
   imports: [
     RouterLink,
+    ButtonDirective,
+    RouterLinkActive,
+    Ripple,
   ],
   templateUrl: './aside.component.html',
   styleUrl: './aside.component.css'

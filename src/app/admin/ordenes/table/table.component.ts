@@ -18,7 +18,6 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
     CommonModule,
     DatePipe,
     DecimalPipe,
-    NgClass,
     RouterModule,
     TableModule,
     ButtonModule,
@@ -85,5 +84,15 @@ export class TableComponent implements OnInit, OnDestroy {
           this.loading = false;
         },
       });
+  }
+
+  generarReporte() {
+    // Lógica para abrir un modal o redirigir a la creación de orden
+    console.log('Crear nueva orden');
+  }
+
+  refrescarOrdenes() {
+    // Lógica para recargar la lista de órdenes
+    console.log('Refrescando órdenes...');
   }
 }

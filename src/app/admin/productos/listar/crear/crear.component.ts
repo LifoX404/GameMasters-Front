@@ -12,7 +12,7 @@ import { CardModule } from 'primeng/card';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-productos-crear',
+  selector: 'app-crear',
   standalone: true,
   imports: [
     CommonModule,
@@ -23,10 +23,10 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule
   ],
-  templateUrl: './productos-crear.component.html',
-  styleUrls: ['./productos-crear.component.css'],
+  templateUrl: './crear.component.html',
+  styleUrls: ['./crear.component.css'],
 })
-export class ProductosCrearComponent {
+export class CrearComponent {
   formProducto: FormGroup;
 
   constructor(private fb: FormBuilder) {

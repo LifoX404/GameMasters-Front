@@ -5,6 +5,7 @@ import { AuthService } from './auth.service';
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const authService = inject(AuthService);
   const token = authService.getToken();
+  console.log('Token en Interceptor:', token);
 
   // 🔒 Excluir endpoints públicos
   const isPublicEndpoint =

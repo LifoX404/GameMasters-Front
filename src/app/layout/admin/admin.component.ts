@@ -23,19 +23,19 @@ export class AdminComponent {
       route: 'dashboard'
     },
     {
-      label: 'Usuarios',
+      label: 'Customers',
       icon: 'pi pi-users',
       route: 'customers',
     },
     {
-      label: 'Productos',
+      label: 'Products',
       icon: 'pi pi-box',
-      route: 'products'
+      route: 'productos'
     },
     {
-      label: 'Reportes',
+      label: 'Ordenes',
       icon: 'pi pi-chart-bar',
-      route: '/reportes'
+      route: 'ordenes'
     },
     {
       label: 'Configuración',

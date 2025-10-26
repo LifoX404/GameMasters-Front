@@ -1,11 +1,18 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {ListarClientesComponent} from './listar/listar.component';
 
 @Component({
   selector: 'app-clientes',
-  imports: [],
+  imports: [
+    ListarClientesComponent
+  ],
   templateUrl: './clientes.component.html',
-  styleUrl: './clientes.component.css'
+  styleUrls: ['./clientes.component.css','../../layout/admin/admin.component.css']
 })
 export class ClientesComponent {
+
+  vista: 'tabla' | 'detalles' = 'tabla';
+
+
 
 }

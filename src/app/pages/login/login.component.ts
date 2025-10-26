@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../core/auth.service';
+import {LoginRequest} from '../../core/models/auth.model';
 
 @Component({
   selector: 'app-login',
@@ -19,17 +20,17 @@ import { AuthService } from '../../core/auth.service';
 })
 export class LoginComponent {
   loginForm: FormGroup;
-  errorMessage = '';
   loading = false;
+  errorMessage = '';
 
   constructor(
-    private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private fb: FormBuilder
   ) {
     this.loginForm = this.fb.group({
       username: ['', Validators.required],
-      password: ['', Validators.required],
+      password: ['', Validators.required]
     });
   }
 
@@ -41,15 +42,26 @@ export class LoginComponent {
     this.loading = true;
     this.errorMessage = '';
 
-    this.authService.login(this.loginForm.value).subscribe({
+    const credentials: LoginRequest = this.loginForm.value;
+
+    this.authService.login(credentials).subscribe({
       next: (response) => {
         this.loading = false;
-        this.router.navigate(['/']);
+
+        // Redirigir según el rol
+        if (response.roleType === 'ADMIN') {
+          this.router.navigate(['/admin/dashboard']);
+        } else if (response.roleType === 'CUSTOMER') {
+          this.router.navigate(['/customer']);
+        } else {
+          this.router.navigate(['/']);
+        }
       },
-      error: (err) => {
+      error: (error) => {
         this.loading = false;
-        this.errorMessage = err.error?.message || 'Error al iniciar sesión';
-      },
+        this.errorMessage = 'Usuario o contraseña incorrectos';
+        console.error('Error en login:', error);
+      }
     });
   }
 }

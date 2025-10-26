@@ -114,9 +114,5 @@ export class AuthService {
   getCustomerId(): number | null {
     return this.customerIdSubject.value;
   }
-
-  isCustomer(): boolean {
-    return this.getUserRol() === 'CUSTOMER';
-  }
 }
 

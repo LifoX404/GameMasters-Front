@@ -11,12 +11,12 @@
 
 .layout-sidebar {
   width: 260px;
-  background: #1e293b;
-  color: #e2e8f0;
+  background: var(--gradient-bg-sidebar); /* Gradiente oscuro */
+  color: var(--color-text-light);
   transition: width 0.3s ease;
   display: flex;
   flex-direction: column;
-  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 0 10px var(--color-shadow-dark); /* Sombra más pronunciada */
   position: relative;
   z-index: 100;
 }
@@ -27,27 +27,29 @@
 
 .sidebar-header {
   padding: 1.5rem 1rem;
-  border-bottom: 1px solid #334155;
+  border-bottom: 1px solid var(--color-border);
   text-align: center;
 }
 
 .logo-text {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #60a5fa;
+  color: var(--color-electric-blue); /* Brillante y eléctrico */
+  /* Opcional: Para simular el brillo metálico */
+  text-shadow: 0 0 5px rgba(0, 191, 255, 0.6);
 }
 
 .logo-mini i {
   font-size: 1.5rem;
-  color: #60a5fa;
+  color: var(--color-electric-blue);
 }
 
 .toggle-btn {
   position: absolute;
   top: 1rem;
   right: -15px;
-  background: #3b82f6 !important;
-  color: white !important;
+  background: var(--color-electric-blue) !important;
+  color: var(--color-dark-primary) !important; /* Texto muy oscuro sobre el botón */
   border-radius: 50%;
   width: 30px;
   height: 30px;
@@ -55,12 +57,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 10px var(--color-shadow-dark);
   z-index: 101;
 }
 
 .toggle-btn:hover {
-  background: #2563eb !important;
+  background: var(--color-electric-blue-hover) !important;
 }
 
 .sidebar-menu {
@@ -75,11 +77,11 @@
 }
 
 .sidebar-menu::-webkit-scrollbar-track {
-  background: #1e293b;
+  background: var(--color-dark-primary);
 }
 
 .sidebar-menu::-webkit-scrollbar-thumb {
-  background: #475569;
+  background: var(--color-dark-tertiary);
   border-radius: 3px;
 }
 
@@ -97,7 +99,7 @@
   display: flex;
   align-items: center;
   padding: 0.875rem 1.25rem;
-  color: #cbd5e1;
+  color: var(--color-text-medium);
   text-decoration: none;
   transition: all 0.2s;
   cursor: pointer;
@@ -110,13 +112,13 @@
 }
 
 .menu-link:hover {
-  background: #334155;
-  color: #ffffff;
+  background: var(--color-dark-secondary); /* Negro azulado para hover */
+  color: var(--color-text-light);
 }
 
 .menu-link.active {
-  background: #3b82f6;
-  color: #ffffff;
+  background: var(--color-dark-tertiary); /* Fondo oscuro activo */
+  color: var(--color-electric-blue); /* Brillo eléctrico en el texto activo */
 }
 
 .menu-link.active::before {
@@ -126,7 +128,9 @@
   top: 0;
   bottom: 0;
   width: 4px;
-  background: #60a5fa;
+  background: var(--color-electric-blue); /* Indicador de brillo eléctrico */
+  /* Opcional: añadir un poco de "glow" al indicador */
+  box-shadow: 0 0 8px var(--color-electric-blue);
 }
 
 .menu-icon {
@@ -144,7 +148,7 @@
   list-style: none;
   padding: 0;
   margin: 0;
-  background: #0f172a;
+  background: var(--color-dark-primary); /* Fondo más oscuro para submenú */
 }
 
 .submenu-item {
@@ -155,21 +159,20 @@
   display: flex;
   align-items: center;
   padding: 0.75rem 1.25rem 0.75rem 3.5rem;
-  color: #94a3b8;
+  color: var(--color-text-medium);
   text-decoration: none;
   transition: all 0.2s;
-  cursor: pointer;
   font-size: 0.9rem;
 }
 
 .submenu-link:hover {
-  background: #1e293b;
-  color: #ffffff;
+  background: var(--color-dark-secondary);
+  color: var(--color-text-light);
 }
 
 .submenu-link.active {
-  color: #60a5fa;
-  background: #1e293b;
+  color: var(--color-electric-blue);
+  background: var(--color-dark-secondary);
 }
 
 .submenu-icon {
@@ -183,21 +186,22 @@
 
 .sidebar-footer {
   padding: 1rem;
-  border-top: 1px solid #334155;
+  border-top: 1px solid var(--color-border);
   text-align: center;
 }
 
 .footer-text {
   font-size: 0.75rem;
-  color: #64748b;
+  color: var(--color-text-medium);
   margin: 0;
 }
 
 .layout-main {
   flex: 1;
   overflow-y: auto;
-  background: #f1f5f9;
+  background: var(--gradient-bg-main); /* Fondo principal muy oscuro */
   padding: 2rem;
+  color: var(--color-text-light); /* Aseguramos que el texto principal también sea claro */
 }
 
 /* Responsive */
